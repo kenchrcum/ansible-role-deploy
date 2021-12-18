@@ -1,0 +1,6 @@
+---
+- include_tasks: prerequisites.yml
+
+- include_tasks: prepare.yml
+
+- include_tasks: run.yml

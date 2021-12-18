@@ -1,0 +1,12 @@
+---
+# List of directories to be present
+directories:
+  - "/opt/docker"
+  - "/opt/docker/{{ project_name }}"
+
+# List of files to copy
+files:
+  - "docker-compose.yml"
+
+# Docker-compose scale config
+scale: None

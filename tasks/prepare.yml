@@ -1,0 +1,23 @@
+- name: directories
+  file:
+    path: "{{ item }}"
+    state: directory
+    mode: '0755'
+  loop: "{{ directories }}"
+
+- name: files
+  copy:
+    src: "{{ item }}"
+    dest: "/opt/docker/{{ project_name }}/{{ item }}"
+    mode: '0644'
+  loop: "{{ files }}"
+
+- name: check deploy.pre
+  stat:
+    path: "/opt/docker/{{ project_name }}/deploy.pre.sh"
+  register: pre_deploy
+
+- name: check deploy.post
+  stat:
+    path: "/opt/docker/{{ project_name }}/deploy.post.sh"
+  register: post_deploy
