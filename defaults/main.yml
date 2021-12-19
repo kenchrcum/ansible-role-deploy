@@ -9,4 +9,4 @@ files:
   - "docker-compose.yml"
 
 # Docker-compose scale config
-scale: None
+scale: {}
