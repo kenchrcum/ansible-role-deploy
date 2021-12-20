@@ -1,12 +1,22 @@
 ---
 # List of directories to be present
-directories:
-  - "/opt/docker"
-  - "/opt/docker/{{ project_name }}"
+directories: []
+
+directories_default:
+  - "{{ basedir }}"
+  - "{{ workdir }}"
+
+basedir: "/opt/docker"
+workdir: "{{ basedir }}/{{ project_name }}"
 
 # List of files to copy
-files:
+files: []
+
+files_default:
   - "docker-compose.yml"
 
 # Docker-compose scale config
 scale: {}
+
+pre_deploy_script_name: deploy.pre.sh
+post_deploy_script_name: deploy.post.sh

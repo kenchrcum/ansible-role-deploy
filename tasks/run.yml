@@ -1,17 +1,17 @@
-- name: run deploy.pre
+- name: "run {{ pre_deploy_script_name }}"
   shell:
-    cmd: bash deploy.pre.sh
-    chdir: "/opt/docker/{{ project_name }}"
+    cmd: "bash {{ pre_deploy_script_name }}"
+    chdir: "{{ workdir }}"
   when: pre_deploy.stat.exists
 
 - name: start deployment
   community.docker.docker_compose:
-    project_src: "/opt/docker/{{ project_name }}"
+    project_src: "{{ workdir }}"
     env_file: "{{ env_file | default(None) }}"
     scale: "{{ scale | default(None) }}"
 
-- name: run deploy.post
+- name: "run {{ post_deploy_script_name }}"
   shell:
-    cmd: bash deploy.post.sh
-    chdir: "/opt/docker/{{ project_name }}"
+    cmd: "bash {{ post_deploy_script_name }}"
+    chdir: "{{ workdir }}"
   when: post_deploy.stat.exists
