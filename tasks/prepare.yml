@@ -3,16 +3,14 @@
     path: "{{ item }}"
     state: directory
     mode: '0755'
-  loop:
-    - "{{ directories_default }} + {{ directories }}"
+  loop: "{{ directories_default }} + {{ directories }}"
 
 - name: files
   copy:
     src: "{{ item }}"
     dest: "{{ workdir }}/{{ item }}"
     mode: '0644'
-  loop:
-    - "{{ files_default }} + {{ files }}"
+  loop: "{{ files_default }} + {{ files }}"
 
 - name: "check {{ pre_deploy_script_name }}"
   stat:
