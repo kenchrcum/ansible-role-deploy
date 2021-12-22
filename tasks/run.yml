@@ -8,7 +8,8 @@
   community.docker.docker_compose:
     project_src: "{{ workdir }}"
     env_file: "{{ env_file | default(None) }}"
-    scale: "{{ scale | default(None) }}"
+    scale: "{{ scale }}"
+    remove_orphans: "{{ remove_orphans }}"
 
 - name: "run {{ post_deploy_script_name }}"
   shell:

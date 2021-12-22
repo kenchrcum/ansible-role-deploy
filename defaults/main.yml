@@ -15,8 +15,9 @@ files: []
 files_default:
   - "docker-compose.yml"
 
-# Docker-compose scale config
+# Docker-compose config
 scale: {}
+remove_orphans: yes
 
 pre_deploy_script_name: deploy.pre.sh
 post_deploy_script_name: deploy.post.sh
