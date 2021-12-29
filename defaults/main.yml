@@ -7,7 +7,7 @@ deploy_directories_default:
   - "{{ deploy_workdir }}"
 
 deploy_basedir: "/opt/docker"
-deploy_workdir: "{{ basedir }}/{{ project_name }}"
+deploy_workdir: "{{ deploy_basedir }}/{{ deploy_project_name }}"
 
 # List of files to copy
 deploy_files: []
