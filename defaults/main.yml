@@ -1,23 +1,23 @@
 ---
 # List of directories to be present
-directories: []
+deploy_directories: []
 
-directories_default:
-  - "{{ basedir }}"
-  - "{{ workdir }}"
+deploy_directories_default:
+  - "{{ deploy_basedir }}"
+  - "{{ deploy_workdir }}"
 
-basedir: "/opt/docker"
-workdir: "{{ basedir }}/{{ project_name }}"
+deploy_basedir: "/opt/docker"
+deploy_workdir: "{{ basedir }}/{{ project_name }}"
 
 # List of files to copy
-files: []
+deploy_files: []
 
-files_default:
+deploy_files_default:
   - "docker-compose.yml"
 
 # Docker-compose config
-scale: {}
-remove_orphans: yes
+deploy_scale: {}
+deploy_remove_orphans: yes
 
-pre_deploy_script_name: deploy.pre.sh
-post_deploy_script_name: deploy.post.sh
+deploy_pre_deploy_script_name: deploy.pre.sh
+deploy_post_deploy_script_name: deploy.post.sh

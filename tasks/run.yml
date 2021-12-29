@@ -1,18 +1,18 @@
-- name: "run {{ pre_deploy_script_name }}"
+- name: "run {{ deploy_pre_deploy_script_name }}"
   shell:
-    cmd: "bash {{ pre_deploy_script_name }}"
-    chdir: "{{ workdir }}"
+    cmd: "bash {{ deploy_pre_deploy_script_name }}"
+    chdir: "{{ deploy_workdir }}"
   when: pre_deploy.stat.exists
 
 - name: start deployment
   community.docker.docker_compose:
-    project_src: "{{ workdir }}"
-    env_file: "{{ env_file | default(None) }}"
-    scale: "{{ scale }}"
-    remove_orphans: "{{ remove_orphans }}"
+    project_src: "{{ deploy_workdir }}"
+    env_file: "{{ deploy_env_file | default(None) }}"
+    scale: "{{ deploy_scale }}"
+    remove_orphans: "{{ deploy_remove_orphans }}"
 
-- name: "run {{ post_deploy_script_name }}"
+- name: "run {{ deploy_post_deploy_script_name }}"
   shell:
-    cmd: "bash {{ post_deploy_script_name }}"
-    chdir: "{{ workdir }}"
+    cmd: "bash {{ deploy_post_deploy_script_name }}"
+    chdir: "{{ deploy_workdir }}"
   when: post_deploy.stat.exists

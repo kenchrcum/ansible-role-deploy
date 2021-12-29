@@ -3,21 +3,21 @@
     path: "{{ item }}"
     state: directory
     mode: '0755'
-  loop: "{{ directories_default }} + {{ directories }}"
+  loop: "{{ deploy_directories_default }} + {{ deploy_directories }}"
 
 - name: files
   copy:
     src: "{{ item }}"
-    dest: "{{ workdir }}/{{ item }}"
+    dest: "{{ deploy_workdir }}/{{ item }}"
     mode: '0644'
-  loop: "{{ files_default }} + {{ files }}"
+  loop: "{{ deploy_files_default }} + {{ deploy_files }}"
 
-- name: "check {{ pre_deploy_script_name }}"
+- name: "check {{ deploy_pre_deploy_script_name }}"
   stat:
-    path: "{{ workdir }}/deploy.pre.sh"
+    path: "{{ deploy_workdir }}/{{ deploy_pre_deploy_script_name }}"
   register: pre_deploy
 
-- name: "check {{ post_deploy_script_name }}"
+- name: "check {{ deploy_post_deploy_script_name }}"
   stat:
-    path: "{{ workdir }}/deploy.post.sh"
+    path: "{{ deploy_workdir }}/{{ deploy_post_deploy_script_name }}"
   register: post_deploy
