@@ -10,6 +10,7 @@
     env_file: "{{ deploy_env_file | default(None) }}"
     scale: "{{ deploy_scale }}"
     remove_orphans: "{{ deploy_remove_orphans }}"
+    pull: "{{ deploy_docker_pull }}"
 
 - name: "run {{ deploy_post_deploy_script_name }}"
   shell:

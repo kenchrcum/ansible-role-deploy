@@ -21,3 +21,5 @@ deploy_remove_orphans: yes
 
 deploy_pre_deploy_script_name: deploy.pre.sh
 deploy_post_deploy_script_name: deploy.post.sh
+
+deploy_docker_pull: yes
